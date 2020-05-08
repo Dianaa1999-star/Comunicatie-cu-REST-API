@@ -1,0 +1,52 @@
+@Copyright Apostu_Croitoru_Diana_321CA
+
+
+		Tema 3 Client Web
+
+	Pentru implementarea temei am ales sa folosesc biblioteca de parsare
+parson , specificata in enuntul temei.
+
+		Implementare
+	
+	Am creeat pentru fiecare task, o functie specifica , care
+construieste mesajul si trimite cererea serverului. In header-ul utils.h
+sunt definite functiile implementate.
+
+	a. Register & Login
+		Am citit datele de la tastatura, am deschis conexiunea si
+am creeat payload-ul, folosid functiile incluse in parson.h(cum ar fi functia
+json_object_set_string). Am apelat functia compute_post_request care creeaza
+o cerere de tip POST. Am trimis mesajul serverului. Daca nu am primit un mesaj
+din partea serverului, retrimit cererea. Analog , am procedat in cazul comenzii
+login , schimband doar url-ul. 
+	-> functiile register_func & login_func
+
+	b. Enter_library & Get_books
+		Am deschis conexiunea si am apelat functia compute_get_request
+care creeaza o cerere de tip GET. Am trimis mesajul serverului. Daca nu am primit
+un mesaj din partea serverului, retrimit cererea. Analog , am procedat in cazul
+comenzii login , schimband doar url-ul. 
+	-> functiile enter_func & get_books_func
+
+	c. Get_book & Delete_book
+		Am citit id-ul cartii de la tastatura si l-am adaugat in url.
+Am deschis conexiunea si am apelat functia compute_get_request, implicit
+compute_delete_request, creeand o cerere de tip GET, respectiv DELETE. Am trimis
+mesajul serverului.Daca nu am primit un mesaj din partea serverului, retrimit
+cererea.
+	-> functiile get_book_func & delete_book_func
+
+	d. Add_book & Logout
+		In cazul functiei add_book_func am citit datele specifice unei carti, am
+deschis conexiunea si am creeat payload-ul. Am apelat functia compute_post_request
+care creeaza o cerere de tip POST. Am trimit mesajul serverului.  Daca nu am primit
+un mesaj din partea serverului, retrimit cererea. In cazul functiei logout_func
+am deschis conexiunea, am creeat mesajul care este de tip cerere GET si am
+trimis mesajul serverului.
+	
+	Am pastrat headerele din laborator. Functiile compute_post_request ,
+compute_get_request si compute_delete_request respecta tiparul din laborator.
+
+	Memory leeks
+		Pentru a ma asigura ca nu am pierderi de memorie am rulat
+executabilul cu valgrind.
